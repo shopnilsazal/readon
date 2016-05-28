@@ -15,7 +15,7 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=70, help_text="Use pen name not real name.")
+    name = models.CharField(max_length=70, help_text="Use pen name not real name.", unique=True)
 
     def __str__(self):
         return self.name
