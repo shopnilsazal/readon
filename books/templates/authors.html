@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+    <h2>Hello {{ request.user.username|title }}. You last logged in at {{ request.user.last_login|date:'D d M, Y' }}</h2>
+{% else %}
+    <h2>Hello Guest</h2>
+{% endif %}
+
+<main>
+{% for author in authors %}
+    <h3>{{ author.name }}</h3>
+{% endfor %}
+
+</main>
+</body>
+</html>
