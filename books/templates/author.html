@@ -1,26 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Author</title>
-</head>
-<body>
-{% if request.user.is_authenticated %}
-    <h2>Hello {{ request.user.username|title }}. You last logged in
-        at {{ request.user.last_login|date:'D d M, Y' }}</h2>
-{% else %}
-    <h2>Hello Guest</h2>
-{% endif %}
+{% extends "base.html" %}
 
-<main>
+{% block content %}
 <h2>{{ author.name }}</h2>
     {% for book in author.books.all %}
         {% if book.review %}
-            <h3>{{ book.title }}</h3>
-            <p>{{ book.review }}</p>
+            {% include "book-detail.html" %}
         {% endif %}
     {% endfor %}
-
-</main>
-</body>
-</html>
+{% endblock %}

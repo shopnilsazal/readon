@@ -1,27 +1,9 @@
+{% extends "base.html" %}
 {% load humanize %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django Home</title>
-</head>
-<body>
-{% if request.user.is_authenticated %}
-    <h2>Hello {{ request.user.username|title }}. You last logged in at {{ request.user.last_login|date:'D d M, Y' }}</h2>
-{% else %}
-    <h2>Hello Guest</h2>
-{% endif %}
 
-<main>
+{% block content %}
     <h1>{{ books.count|apnumber|title }} book{{ books.count|pluralize }}</h1>
     {% for book in books %}
-        <h3>{{ book.title }} by {{ book.list_authors }}</h3>
-        {% if book.is_favourite %}
-            <span>Favourite</span>
-        {% endif %}
-        <p>{{ book.review }}</p>
+        {% include "book-detail.html" %}
     {% endfor %}
-
-</main>
-</body>
-</html>
+{% endblock %}

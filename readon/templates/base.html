@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Readon!</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700|Merriweather:400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
+        <div class="welcome">
+            {% if request.user.is_authenticated %}
+                <p>Hello {{ request.user.username|title }}. You last logged in
+                    at {{ request.user.last_login|date:'D d M, Y' }}</p>
+            {% else %}
+                <p>Hello Guest</p>
+            {% endif %}
+        </div>
+    </header>
+    <nav>
+        <a href="{% url 'books' %}">Books</a>
+        <a href="{% url 'authors' %}">Authors</a>
+    </nav>
+
+    <main>
+
+        {% block content %} {% endblock %}
+
+    </main>
+</div>
+</body>
+</html>
