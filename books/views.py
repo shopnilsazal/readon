@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 from django.views.generic import View, DetailView
 from django.views.generic.edit import CreateView
 from django.db.models import Count
@@ -69,6 +70,7 @@ class ReviewList(View):
         return render(request, "list-to-review.html", context)
 
 
+@login_required
 def review_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
 

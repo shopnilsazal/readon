@@ -15,16 +15,18 @@
         <div class="welcome">
             {% if request.user.is_authenticated %}
                 <p>Hello {{ request.user.username|title }}. You last logged in
-                    at {{ request.user.last_login|date:'D d M, Y' }}</p>
+                    at {{ request.user.last_login|date:'D d M, Y' }} <a href="{% url 'logout' %}">Logout</a></p>
             {% else %}
-                <p>Hello Guest</p>
+                <p>Hello Guest <a href="{% url 'login' %}">Login</a></p>
             {% endif %}
         </div>
     </header>
     <nav>
         <a href="{% url 'books' %}">Books</a>
         <a href="{% url 'authors' %}">Authors</a>
-        <a href="{% url 'review-books' %}">Request A Review</a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'review-books' %}">Reviews</a>
+        {% endif %}
     </nav>
 
     <main>
