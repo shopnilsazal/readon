@@ -6,7 +6,7 @@ from .models import Book, Author
 class BookAdmin(admin.ModelAdmin):
     fieldsets = [
         ("Book Details", {"fields": ["title", "authors"]}),
-        ("Review", {"fields": ["review", "date_reviewed", "is_favourite"]})
+        ("Review", {"fields": ["review", "reviewed_by", "date_reviewed", "is_favourite"]})
     ]
     readonly_fields = ("date_reviewed",)
 
