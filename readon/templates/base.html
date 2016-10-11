@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <header>
-        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
+        <h1>Read On</h1>
         <div class="welcome">
             {% if request.user.is_authenticated %}
                 <p>Hello {{ request.user.username|title }}. You last logged in
