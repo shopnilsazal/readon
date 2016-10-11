@@ -1,7 +1,7 @@
 # Read On
 #### A simple book review app built with Love and Django.
 
-![alt Screenshot](https://github.com/shopnilsazal/readon/raw/master/static/screenshot.jpg "Readon screenshot")
+![alt Screenshot](https://github.com/shopnilsazal/readon/raw/master/screenshot.png "Readon screenshot")
 
 ## Instructions
 
